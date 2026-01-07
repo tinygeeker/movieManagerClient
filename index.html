@@ -13,10 +13,128 @@
         
         h1 {
             color: #333;
+            margin: 0;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 0;
+        }
+        
+        .header h1 {
+            margin: 0;
+        }
+        
+        .header .settings-menu {
+            margin-left: auto;
+        }
+        
+        .settings-menu {
+            position: relative;
+        }
+        
+        #settings-button {
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #fff;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        #settings-button:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .settings-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 5px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 5px 0;
+            min-width: 150px;
+            display: none;
+            z-index: 1000;
+        }
+        
+        .settings-dropdown a,
+        .settings-dropdown button {
+            display: block;
+            padding: 8px 16px;
+            text-decoration: none;
+            color: #333;
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .settings-dropdown a:hover,
+        .settings-dropdown button:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .settings-dropdown.show {
+            display: block;
+        }
+        
+        .donate-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            display: none;
+        }
+        
+        .donate-modal.show {
+            display: flex;
+        }
+        
+        .donate-content {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 900px;
+            width: 95%;
+            text-align: center;
+        }
+        
+        .donate-content img {
+            max-width: 100%;
+            max-height: 700px;
+            border-radius: 4px;
+        }
+        
+        .donate-close {
+            margin-top: 15px;
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #fff;
+            cursor: pointer;
+        }
+        
+        .donate-close:hover {
+            background-color: #f5f5f5;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
         }
         
@@ -31,22 +149,41 @@
         .content {
             display: flex;
             gap: 20px;
+            margin-top: 20px;
         }
         
         .sidebar {
-            width: 300px;
-            background-color: #fff;
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 250px;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid #e9ecef;
+        }
+        
+        .sidebar h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #343a40;
+            font-size: 16px;
+            font-weight: 600;
         }
         
         .main-content {
             flex: 1;
             background-color: #fff;
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid #e9ecef;
+        }
+        
+        .main-content h3 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #343a40;
+            font-size: 18px;
+            font-weight: 600;
         }
         
         .folder-list, .movie-list {
@@ -56,42 +193,129 @@
         }
         
         .folder-item, .movie-item {
-            padding: 10px;
+            padding: 12px 15px;
             margin: 5px 0;
-            border-radius: 3px;
+            border-radius: 6px;
             cursor: pointer;
-            transition: background-color 0.2s;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border: 1px solid #e9ecef;
+            white-space: nowrap;
+            overflow: hidden;
+            min-height: 40px;
+        }
+        
+        .folder-item strong {
+            display: inline-block;
+            margin-right: 10px;
         }
         
         .folder-item:hover, .movie-item:hover {
-            background-color: #f5f5f5;
+            background-color: #f8f9fa;
+            border-color: #dee2e6;
+            transform: translateX(3px);
+        }
+        
+        .folder-path {
+            font-size: 12px;
+            color: #6c757d;
+            margin-left: 10px;
+            font-weight: normal;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .folder-name {
+            font-weight: 500;
+            color: #495057;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         
         .movie-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(5, 220px);
             gap: 20px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+        
+        .pagination button {
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #fff;
+            cursor: pointer;
+        }
+        
+        .pagination button:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .pagination button:disabled {
+            background-color: #f9f9f9;
+            cursor: not-allowed;
+            color: #ccc;
+        }
+        
+        .pagination .page-info {
+            font-size: 14px;
+            color: #666;
         }
         
         .movie-card {
-            background-color: #f9f9f9;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .movie-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-color: #dee2e6;
         }
         
         .movie-thumbnail {
             width: 100%;
-            height: 250px;
+            height: 293px;
             background-color: #e0e0e0;
-            border-radius: 3px;
+            border-radius: 8px;
             margin-bottom: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 48px;
             color: #ccc;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .thumbnail-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+            color: rgba(255, 255, 255, 0.9);
         }
         
         .movie-info {
@@ -108,6 +332,50 @@
         
         .movie-duration {
             color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .movie-details-hover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.8);
+            color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        .movie-card:hover .movie-details-hover {
+            display: flex;
+        }
+        
+        .movie-details-hover h4 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            line-height: 1.2;
+            font-size: 16px;
+        }
+        
+        .movie-details-hover .detail-item {
+            margin: 5px 0;
+            font-size: 12px;
+        }
+        
+        .movie-details-hover .detail-label {
+            font-weight: bold;
+            margin-right: 5px;
         }
         
         .movie-details {
@@ -143,11 +411,11 @@
 </head>
 <body>
     <div class="container">
-        <h1>电影管理器</h1>
-        
-        <div class="directory-info">
-            <h2>当前目录: <span id="current-directory"></span></h2>
+        <div class="header">
+            <h1>电影管理器</h1>
         </div>
+        
+        <!-- 移除顶部的当前目录显示 -->
         
         <div class="content">
             <div class="sidebar">
@@ -165,11 +433,10 @@
                     <!-- 电影卡片将通过JavaScript动态生成 -->
                 </div>
                 
-                <div class="movie-details" id="movie-details">
-                    <h3>电影详情</h3>
-                    <div id="detail-content">
-                        选择一部电影查看详情
-                    </div>
+                <div class="pagination" id="pagination">
+                    <button id="prev-page" disabled>上一页</button>
+                    <span class="page-info" id="page-info">第 1 页，共 1 页</span>
+                    <button id="next-page" disabled>下一页</button>
                 </div>
             </div>
         </div>
@@ -181,173 +448,545 @@
         const fs = require('fs');
         
         let currentDirectory = '.';
+        let allMovies = [];
+        let currentPage = 1;
+        const moviesPerPage = 20;
         
         document.addEventListener('DOMContentLoaded', async () => {
             await updateCurrentDirectory();
             await scanDirectory(currentDirectory);
+            
+            // 点击其他地方关闭可能的设置菜单
+            document.addEventListener('click', (event) => {
+                const settingsDropdown = document.getElementById('settings-dropdown');
+                if (settingsDropdown && !event.target.closest('.settings-menu')) {
+                    settingsDropdown.classList.remove('show');
+                }
+            });
+            
+            // 添加分页按钮事件监听器
+            document.getElementById('prev-page').addEventListener('click', goToPrevPage);
+            document.getElementById('next-page').addEventListener('click', goToNextPage);
         });
         
         async function updateCurrentDirectory() {
             const appDir = process.cwd();
-            document.getElementById('current-directory').textContent = appDir;
             currentDirectory = appDir;
         }
         
         async function scanDirectory(directoryPath) {
-            const result = await electronAPI.scanDirectory(directoryPath);
+            console.log('Scanning directory:', directoryPath);
             
-            if (result.error) {
-                console.error('Error scanning directory:', result.error);
-                return;
+            // 直接从前端读取目录内容，不依赖主进程
+            try {
+                const fs = require('fs');
+                const path = require('path');
+                
+                const items = fs.readdirSync(directoryPath);
+                console.log('Direct read items:', items);
+                
+                // 分离文件夹和电影文件
+                const folders = [];
+                const movies = [];
+                
+                items.forEach(item => {
+                    try {
+                        const itemPath = path.join(directoryPath, item);
+                        const stats = fs.statSync(itemPath);
+                        
+                        if (stats.isDirectory()) {
+                            console.log('Found folder:', item);
+                            folders.push({
+                                name: item,
+                                path: itemPath
+                            });
+                        } else if (stats.isFile()) {
+                            const lowerItem = item.toLowerCase();
+                            const isVideo = lowerItem.endsWith('.mp4') || 
+                                           lowerItem.endsWith('.mkv') || 
+                                           lowerItem.endsWith('.avi') || 
+                                           lowerItem.endsWith('.mov') || 
+                                           lowerItem.endsWith('.wmv') || 
+                                           lowerItem.endsWith('.flv') || 
+                                           lowerItem.endsWith('.webm');
+                            
+                            if (isVideo) {
+                                console.log('Found movie:', item);
+                                movies.push({
+                                    name: item,
+                                    path: itemPath
+                                });
+                            }
+                        }
+                    } catch (err) {
+                        console.error('Error processing item:', item, err);
+                    }
+                });
+                
+                console.log('Final folders:', folders);
+                console.log('Final movies:', movies);
+                
+                updateFolderList(folders);
+                allMovies = movies;
+                currentPage = 1;
+                updateMovieGrid();
+            } catch (err) {
+                console.error('Error scanning directory:', err);
+                updateFolderList([]);
+                allMovies = [];
+                updateMovieGrid();
             }
-            
-            updateFolderList(result.folders);
-            updateMovieGrid(result.movies);
         }
         
         function updateFolderList(folders) {
+            console.log('Updating folder list with:', folders);
+            
             const folderList = document.getElementById('folder-list');
-            folderList.innerHTML = `
+            const path = require('path');
+            
+            // 检查是否有父目录
+            const hasParent = currentDirectory !== '.' && currentDirectory !== process.cwd();
+            
+            // 构建文件夹列表HTML
+            let folderListHTML = `
                 <li class="folder-item" data-path=".">
                     <strong>当前目录</strong>
+                    <span class="folder-path">${path.basename(currentDirectory)}</span>
                 </li>
             `;
             
+            // 添加返回按钮
+            if (hasParent) {
+                folderListHTML += `
+                    <li class="folder-item" data-path="..">
+                        <strong>返回上一级</strong>
+                    </li>
+                `;
+            }
+            
+            folderList.innerHTML = folderListHTML;
+            
+            console.log('Found folders count:', folders.length);
+            
+            // 添加文件夹
             folders.forEach(folder => {
+                console.log('Adding folder:', folder.name);
                 const li = document.createElement('li');
                 li.className = 'folder-item';
                 li.dataset.path = folder.path;
-                li.textContent = folder.name;
+                
+                // 添加文件夹名称和路径
+                li.innerHTML = `
+                    <span class="folder-name">${folder.name}</span>
+                `;
+                
                 li.addEventListener('click', () => {
                     currentDirectory = folder.path;
                     scanDirectory(folder.path);
                 });
                 folderList.appendChild(li);
             });
-        }
-        
-        function updateMovieGrid(movies) {
-            const movieGrid = document.getElementById('movie-grid');
-            movieGrid.innerHTML = '';
             
-            movies.forEach(movie => {
-                const movieCard = document.createElement('div');
-                movieCard.className = 'movie-card';
-                
-                movieCard.innerHTML = `
-                    <div class="movie-thumbnail">🎬</div>
-                    <div class="movie-info">
-                        <div class="movie-title">${movie.name}</div>
-                        <div class="movie-duration">加载中...</div>
-                    </div>
-                `;
-                
-                movieCard.addEventListener('click', () => {
-                    showMovieDetails(movie);
-                });
-                
-                movieGrid.appendChild(movieCard);
-                
-                // 获取电影信息
-                getMovieInfo(movie.path, movieCard);
-            });
-        }
-        
-        async function getMovieInfo(moviePath, movieCard) {
-            try {
-                const info = await electronAPI.getMovieInfo(moviePath);
-                const durationElement = movieCard.querySelector('.movie-duration');
-                
-                if (info.format && info.format.duration) {
-                    const duration = parseFloat(info.format.duration);
-                    const hours = Math.floor(duration / 3600);
-                    const minutes = Math.floor((duration % 3600) / 60);
-                    durationElement.textContent = `${hours}h ${minutes}m`;
+            // 添加返回按钮的事件监听器
+            if (hasParent) {
+                const backButton = folderList.querySelector('[data-path=".."]');
+                if (backButton) {
+                    backButton.addEventListener('click', () => {
+                        const parentPath = path.dirname(currentDirectory);
+                        currentDirectory = parentPath;
+                        scanDirectory(parentPath);
+                    });
                 }
-            } catch (error) {
-                console.error('Error getting movie info:', error);
             }
         }
         
-        async function showMovieDetails(movie) {
-            const detailContent = document.getElementById('detail-content');
-            detailContent.innerHTML = '<div class="loading"></div> 加载中...';
+        function updateMovieGrid() {
+            console.log('Updating movie grid with movies:', allMovies);
             
-            try {
-                const info = await electronAPI.getMovieInfo(movie.path);
-                let detailsHTML = `
-                    <h4>${movie.name}</h4>
-                `;
-                
-                if (info.format) {
-                    detailsHTML += `
-                        <div class="detail-item">
-                            <span class="detail-label">格式:</span>
-                            <span>${info.format.format_name}</span>
+            const movieGrid = document.getElementById('movie-grid');
+            movieGrid.innerHTML = '';
+            
+            // 计算当前页的电影
+            const startIndex = (currentPage - 1) * moviesPerPage;
+            const endIndex = startIndex + moviesPerPage;
+            const currentMovies = allMovies.slice(startIndex, endIndex);
+            
+            console.log('Current page movies:', currentMovies);
+            
+            if (currentMovies.length === 0) {
+                console.log('No movies to display');
+                movieGrid.innerHTML = '<p>当前目录没有视频文件</p>';
+            } else {
+                console.log('Displaying', currentMovies.length, 'movies');
+                currentMovies.forEach((movie, index) => {
+                    console.log('Creating movie card for:', movie.name);
+                    
+                    const movieCard = document.createElement('div');
+                    movieCard.className = 'movie-card';
+                    
+                    // 为视频生成唯一的封面颜色
+                    function getColorFromName(name) {
+                        let hash = 0;
+                        for (let i = 0; i < name.length; i++) {
+                            hash = name.charCodeAt(i) + ((hash << 5) - hash);
+                        }
+                        const c = (hash & 0x00FFFFFF)
+                            .toString(16)
+                            .toUpperCase();
+                        return "#" + "00000".substring(0, 6 - c.length) + c;
+                    }
+                    
+                    const thumbnailColor = getColorFromName(movie.name);
+                    
+                    movieCard.innerHTML = `
+                        <div class="movie-thumbnail" style="background-color: ${thumbnailColor};">
+                            <img class="video-thumbnail" src="" alt="视频封面" style="display: none; width: 100%; height: 100%; object-fit: cover;">
+                            <div class="thumbnail-placeholder">
+                                <div style="font-size: 64px;">🎬</div>
+                                <div style="font-size: 14px; margin-top: 10px; color: rgba(255, 255, 255, 0.8);">${path.extname(movie.name).substring(1).toUpperCase()}</div>
+                            </div>
+                            <div class="movie-details-hover">
+                                <h4>${movie.name}</h4>
+                                <div class="detail-item">
+                                    <span class="detail-label">格式:</span>
+                                    <span>加载中...</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">时长:</span>
+                                    <span>加载中...</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">文件大小:</span>
+                                    <span>加载中...</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">分辨率:</span>
+                                    <span>加载中...</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">编码:</span>
+                                    <span>加载中...</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">比特率:</span>
+                                    <span>加载中...</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">帧率:</span>
+                                    <span>加载中...</span>
+                                </div>
+                                <div class="detail-item" style="margin-top: 10px; font-size: 12px; color: #ccc;">
+                                    <span>提示: 安装ffprobe和ffmpeg可显示更多信息</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="movie-info">
+                            <div class="movie-title">${movie.name}</div>
+                            <div class="movie-duration">加载中...</div>
                         </div>
                     `;
                     
-                    if (info.format.duration) {
+                    // 添加点击播放功能
+                    movieCard.addEventListener('click', () => {
+                        console.log('Playing movie:', movie.path);
+                        try {
+                            const { shell } = require('electron');
+                            shell.openPath(movie.path);
+                        } catch (err) {
+                            console.error('Error playing movie:', err);
+                            alert('无法播放视频文件，请确保您的系统有默认的视频播放器');
+                        }
+                    });
+                    
+                    movieGrid.appendChild(movieCard);
+                    
+                    // 获取电影信息
+                    console.log('Getting movie info for:', movie.path);
+                    getMovieInfo(movie.path, movieCard);
+                });
+            }
+            
+            // 更新分页信息
+            updatePagination();
+        }
+        
+        function updatePagination() {
+            const totalPages = Math.ceil(allMovies.length / moviesPerPage);
+            const pageInfo = document.getElementById('page-info');
+            const prevBtn = document.getElementById('prev-page');
+            const nextBtn = document.getElementById('next-page');
+            
+            pageInfo.textContent = `第 ${currentPage} 页，共 ${totalPages} 页`;
+            
+            prevBtn.disabled = currentPage === 1;
+            nextBtn.disabled = currentPage === totalPages;
+        }
+        
+        function goToPrevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                updateMovieGrid();
+            }
+        }
+        
+        function goToNextPage() {
+            const totalPages = Math.ceil(allMovies.length / moviesPerPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+                updateMovieGrid();
+            }
+        }
+        
+        async function getMovieInfo(moviePath, movieCard) {
+            console.log('Getting movie info for:', moviePath);
+            
+            try {
+                const fs = require('fs');
+                const path = require('path');
+                const { execSync } = require('child_process');
+                
+                // 获取文件大小
+                let fileSize = '未知';
+                try {
+                    const stats = fs.statSync(moviePath);
+                    const sizeInMB = (stats.size / (1024 * 1024)).toFixed(2);
+                    fileSize = `${sizeInMB} MB`;
+                } catch (err) {
+                    console.error('Error getting file size:', err);
+                }
+                
+                // 获取文件格式
+                const ext = path.extname(moviePath).substring(1).toUpperCase();
+                const format = ext || '未知';
+                
+                // 更新卡片上的时长信息
+                const durationElement = movieCard.querySelector('.movie-duration');
+                durationElement.textContent = '未知时长';
+                
+                // 更新悬浮时显示的详情信息
+                const hoverDetails = movieCard.querySelector('.movie-details-hover');
+                if (hoverDetails) {
+                    // 更新格式
+                    const formatElement = hoverDetails.querySelector('.detail-item:nth-child(2) span:nth-child(2)');
+                    if (formatElement) {
+                        formatElement.textContent = format;
+                    }
+                    
+                    // 更新时长
+                    const durationHoverElement = hoverDetails.querySelector('.detail-item:nth-child(3) span:nth-child(2)');
+                    if (durationHoverElement) {
+                        durationHoverElement.textContent = '未知';
+                    }
+                    
+                    // 更新文件大小
+                    const sizeElement = hoverDetails.querySelector('.detail-item:nth-child(4) span:nth-child(2)');
+                    if (sizeElement) {
+                        sizeElement.textContent = fileSize;
+                    }
+                    
+                    // 更新分辨率
+                    const resolutionElement = hoverDetails.querySelector('.detail-item:nth-child(5) span:nth-child(2)');
+                    if (resolutionElement) {
+                        resolutionElement.textContent = '未知';
+                    }
+                    
+                    // 更新编码
+                    const codecElement = hoverDetails.querySelector('.detail-item:nth-child(6) span:nth-child(2)');
+                    if (codecElement) {
+                        codecElement.textContent = '未知';
+                    }
+                    
+                    // 更新比特率
+                    const bitrateElement = hoverDetails.querySelector('.detail-item:nth-child(7) span:nth-child(2)');
+                    if (bitrateElement) {
+                        bitrateElement.textContent = '未知';
+                    }
+                    
+                    // 更新帧率
+                    const fpsElement = hoverDetails.querySelector('.detail-item:nth-child(8) span:nth-child(2)');
+                    if (fpsElement) {
+                        fpsElement.textContent = '未知';
+                    }
+                }
+                
+                // 尝试使用系统命令获取视频信息
+                try {
+                    const { execSync } = require('child_process');
+                    const path = require('path');
+                    
+                    // 检查ffprobe是否可用（尝试多种可能的路径）
+                    let ffprobePath = 'ffprobe';
+                    let ffmpegPath = 'ffmpeg';
+                    
+                    // 尝试常见的ffmpeg安装路径
+                    const commonPaths = [
+                        'ffprobe',
+                        'C:\\ffmpeg\\bin\\ffprobe.exe',
+                        'D:\\ffmpeg\\bin\\ffprobe.exe',
+                        'E:\\ffmpeg\\bin\\ffprobe.exe',
+                        'F:\\ffmpeg\\bin\\ffprobe.exe',
+                        '/usr/bin/ffprobe',
+                        '/usr/local/bin/ffprobe'
+                    ];
+                    
+                    let ffprobeAvailable = false;
+                    for (const testPath of commonPaths) {
+                        try {
+                            execSync(`${testPath} -version`, { stdio: 'ignore' });
+                            ffprobePath = testPath;
+                            ffmpegPath = testPath.replace('ffprobe', 'ffmpeg');
+                            ffprobeAvailable = true;
+                            break;
+                        } catch (e) {
+                            // 继续尝试下一个路径
+                        }
+                    }
+                    
+                    if (!ffprobeAvailable) {
+                        throw new Error('ffprobe not found');
+                    }
+                    
+                    // 获取视频元数据
+                    const command = `"${ffprobePath}" -v quiet -print_format json -show_format -show_streams "${moviePath}"`;
+                    const output = execSync(command, { encoding: 'utf8' });
+                    const info = JSON.parse(output);
+                    
+                    // 更新时长
+                    if (info.format && info.format.duration) {
                         const duration = parseFloat(info.format.duration);
                         const hours = Math.floor(duration / 3600);
                         const minutes = Math.floor((duration % 3600) / 60);
                         const seconds = Math.floor(duration % 60);
-                        detailsHTML += `
-                            <div class="detail-item">
-                                <span class="detail-label">时长:</span>
-                                <span>${hours}h ${minutes}m ${seconds}s</span>
-                            </div>
-                        `;
-                    }
-                    
-                    if (info.format.size) {
-                        const size = parseInt(info.format.size);
-                        const sizeInMB = (size / (1024 * 1024)).toFixed(2);
-                        detailsHTML += `
-                            <div class="detail-item">
-                                <span class="detail-label">文件大小:</span>
-                                <span>${sizeInMB} MB</span>
-                            </div>
-                        `;
-                    }
-                }
-                
-                if (info.streams) {
-                    const videoStream = info.streams.find(stream => stream.codec_type === 'video');
-                    if (videoStream) {
-                        detailsHTML += `
-                            <div class="detail-item">
-                                <span class="detail-label">视频编码:</span>
-                                <span>${videoStream.codec_name}</span>
-                            </div>
-                        `;
+                        durationElement.textContent = `${hours}h ${minutes}m`;
                         
-                        if (videoStream.width && videoStream.height) {
-                            detailsHTML += `
-                                <div class="detail-item">
-                                    <span class="detail-label">分辨率:</span>
-                                    <span>${videoStream.width}x${videoStream.height}</span>
-                                </div>
-                            `;
+                        if (hoverDetails) {
+                            const durationHoverElement = hoverDetails.querySelector('.detail-item:nth-child(3) span:nth-child(2)');
+                            if (durationHoverElement) {
+                                durationHoverElement.textContent = `${hours}h ${minutes}m ${seconds}s`;
+                            }
                         }
                     }
                     
-                    const audioStream = info.streams.find(stream => stream.codec_type === 'audio');
-                    if (audioStream) {
-                        detailsHTML += `
-                            <div class="detail-item">
-                                <span class="detail-label">音频编码:</span>
-                                <span>${audioStream.codec_name}</span>
-                            </div>
-                        `;
+                    // 更新分辨率和其他视频属性
+                    if (info.streams) {
+                        const videoStream = info.streams.find(stream => stream.codec_type === 'video');
+                        if (videoStream) {
+                            // 更新分辨率
+                            if (videoStream.width && videoStream.height) {
+                                if (hoverDetails) {
+                                    const resolutionElement = hoverDetails.querySelector('.detail-item:nth-child(5) span:nth-child(2)');
+                                    if (resolutionElement) {
+                                        resolutionElement.textContent = `${videoStream.width}x${videoStream.height}`;
+                                    }
+                                }
+                            }
+                            
+                            // 更新编码格式
+                            if (videoStream.codec_name) {
+                                if (hoverDetails) {
+                                    const codecElement = hoverDetails.querySelector('.detail-item:nth-child(6) span:nth-child(2)');
+                                    if (codecElement) {
+                                        codecElement.textContent = videoStream.codec_name.toUpperCase();
+                                    }
+                                }
+                            }
+                            
+                            // 更新帧率
+                            if (videoStream.r_frame_rate) {
+                                if (hoverDetails) {
+                                    const fpsElement = hoverDetails.querySelector('.detail-item:nth-child(8) span:nth-child(2)');
+                                    if (fpsElement) {
+                                        // 解析帧率
+                                        const [num, den] = videoStream.r_frame_rate.split('/').map(Number);
+                                        const fps = den ? (num / den).toFixed(1) : videoStream.r_frame_rate;
+                                        fpsElement.textContent = `${fps} FPS`;
+                                    }
+                                }
+                            }
+                        }
                     }
+                    
+                    // 更新比特率
+                    if (info.format && info.format.bit_rate) {
+                        if (hoverDetails) {
+                            const bitrateElement = hoverDetails.querySelector('.detail-item:nth-child(7) span:nth-child(2)');
+                            if (bitrateElement) {
+                                const bitrate = parseInt(info.format.bit_rate);
+                                const bitrateMbps = (bitrate / 1000000).toFixed(2);
+                                bitrateElement.textContent = `${bitrateMbps} Mbps`;
+                            }
+                        }
+                    }
+                    
+                    // 尝试从视频中提取帧作为封面
+                    try {
+                        // 检查ffmpeg是否可用
+                        execSync(`"${ffmpegPath}" -version`, { stdio: 'ignore' });
+                        
+                        const thumbnailPath = path.join(process.cwd(), 'thumbnails');
+                        if (!fs.existsSync(thumbnailPath)) {
+                            fs.mkdirSync(thumbnailPath, { recursive: true });
+                        }
+                        
+                        const thumbnailFileName = `${path.basename(moviePath, path.extname(moviePath))}.jpg`;
+                        const thumbnailFullPath = path.join(thumbnailPath, thumbnailFileName);
+                        
+                        // 检查缩略图是否已经存在
+                        if (!fs.existsSync(thumbnailFullPath)) {
+                            // 使用ffmpeg提取视频第一帧
+                            const extractCommand = `"${ffmpegPath}" -i "${moviePath}" -ss 00:00:01 -vframes 1 -s 400x300 "${thumbnailFullPath}"`;
+                            execSync(extractCommand, { stdio: 'ignore' });
+                        }
+                        
+                        // 检查缩略图是否生成成功
+                        if (fs.existsSync(thumbnailFullPath)) {
+                            const thumbnailElement = movieCard.querySelector('.video-thumbnail');
+                            const placeholderElement = movieCard.querySelector('.thumbnail-placeholder');
+                            
+                            if (thumbnailElement && placeholderElement) {
+                                thumbnailElement.src = thumbnailFullPath;
+                                thumbnailElement.style.display = 'block';
+                                placeholderElement.style.display = 'none';
+                            }
+                        }
+                    } catch (extractErr) {
+                        // 静默处理ffmpeg错误，不显示在控制台
+                        // 继续使用默认缩略图
+                    }
+                } catch (err) {
+                    // 静默处理ffprobe错误，不显示在控制台
+                    // 继续使用基本信息
                 }
                 
-                detailContent.innerHTML = detailsHTML;
+                // 直接从文件系统获取基本信息，不依赖 ffprobe
+                console.log('File format:', format);
+                console.log('File size:', fileSize);
+                
+                // 尝试从文件扩展名推断更多信息
+                if (format) {
+                    console.log('Successfully got file format:', format);
+                }
+                
+                if (fileSize !== '未知') {
+                    console.log('Successfully got file size:', fileSize);
+                }
+                
+                // 即使没有 ffprobe，也显示基本信息
+                console.log('Updating movie info with basic data');
+                
             } catch (error) {
-                detailContent.innerHTML = `
-                    <p>获取电影详情时出错: ${error.message}</p>
-                `;
+                console.error('Error getting movie info:', error);
+                const durationElement = movieCard.querySelector('.movie-duration');
+                durationElement.textContent = '无法获取信息';
+                
+                // 更新悬浮时显示的详情信息
+                const hoverDetails = movieCard.querySelector('.movie-details-hover');
+                if (hoverDetails) {
+                    const detailElements = hoverDetails.querySelectorAll('.detail-item span:nth-child(2)');
+                    detailElements.forEach(element => {
+                        element.textContent = '无法获取';
+                    });
+                }
             }
         }
     </script>

@@ -5,15 +5,32 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "electron-builder --win --x64",
+    "package": "electron-packager . 电影管理器 --platform=win32 --arch=x64 --out=dist --overwrite"
   },
-  "keywords": ["electron", "movie", "manager", "video"],
+  "build": {
+    "appId": "com.tinygeeker.moviemanager",
+    "productName": "电影管理器",
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "keywords": [
+    "electron",
+    "movie",
+    "manager",
+    "video"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^28.0.0"
-  },
-  "dependencies": {
-    "ffprobe-static": "^3.0.0"
+    "electron": "^28.0.0",
+    "electron-builder": "^26.4.0",
+    "electron-packager": "^17.1.2"
   }
 }

@@ -1,85 +1,62 @@
 # 电影管理器
 
-一个跨平台的电影管理客户端，支持 Windows 和 macOS。
+一个跨平台的电影管理客户端，支持Windows和macOS系统。
 
 ## 功能特性
 
-- 自动扫描目录下的电影文件
-- 显示电影的时长、分辨率、编码等详细信息
-- 支持浏览子文件夹
-- 直观的网格布局展示电影
-- 点击电影查看详细信息
+- 自动扫描并管理指定文件夹下的所有电影
+- 显示电影的详细信息，包括格式、时长、文件大小、分辨率等
+- 支持文件夹导航，可返回上一级目录
+- 电影卡片式显示，每页最多显示20部电影
+- 鼠标悬浮时显示电影详情
+- 点击电影卡片可直接播放电影
+- 美观的彩色封面，支持从视频中提取帧作为封面
+- 中文界面，操作简单直观
 
-## 如何使用
+## 前提条件
 
-1. 将本应用直接复制到存放电影的文件夹中
-2. 运行应用程序
-3. 应用会自动扫描当前目录下的所有电影文件和子文件夹
-4. 点击文件夹可以浏览子文件夹中的电影
-5. 点击电影卡片可以查看电影的详细信息
+### 基本运行条件
+- Node.js
+- npm 或 yarn
+- Electron
 
-## 技术栈
+### 可选依赖（用于获取更多视频信息）
+- **ffprobe**：用于提取视频元数据（时长、分辨率、编码等）
+- **ffmpeg**：用于从视频中提取帧作为封面
 
-- Electron - 跨平台桌面应用框架
-- Node.js - JavaScript 运行时
-- ffprobe - 用于提取视频文件元数据
+#### 安装方法
+1. **Windows**：
+   - 下载并安装 [FFmpeg](https://ffmpeg.org/download.html#build-windows)
+   - 将ffmpeg添加到系统PATH环境变量中
 
-## 开发环境搭建
+2. **macOS**：
+   - 使用Homebrew安装：`brew install ffmpeg`
 
-### 安装依赖
+3. **Linux**：
+   - 使用包管理器安装：`sudo apt install ffmpeg`（Ubuntu/Debian）
 
-```bash
-# 使用 npm
-npm install
+## 安装与运行
 
-# 或使用 yarn
-yarn install
-```
+1. 克隆或下载项目到本地
+2. 进入项目目录
+3. 安装依赖：`npm install`
+4. 运行应用：`npm start`
 
-### 运行开发版本
+## 使用方法
 
-```bash
-# 使用 npm
-npm start
+1. 将应用程序放在包含电影的文件夹中
+2. 启动应用程序，它会自动扫描当前目录及其子目录中的电影文件
+3. 点击电影卡片可直接播放电影
+4. 鼠标悬浮在电影卡片上可查看电影详情
+5. 点击左侧文件夹列表可导航到不同的文件夹
+6. 使用分页控件可浏览更多电影
 
-# 或使用 yarn
-yarn start
-```
+## 项目贡献
 
-### 构建应用
+如果你觉得项目有用，就请我喝杯奶茶吧。 :tropical_drink:
 
-#### 构建 Windows 版本
+![打赏二维码](https://tinygeeker.github.io/assets/user/donate.jpg)
 
-```bash
-# 首先安装 electron-builder
-npm install electron-builder --save-dev
+## 许可证
 
-# 然后构建
-npx electron-builder --win
-```
-
-#### 构建 macOS 版本
-
-```bash
-# 首先安装 electron-builder
-npm install electron-builder --save-dev
-
-# 然后构建
-npx electron-builder --mac
-```
-
-## 支持的视频格式
-
-- MP4 (.mp4)
-- MKV (.mkv)
-- AVI (.avi)
-- MOV (.mov)
-- WMV (.wmv)
-- FLV (.flv)
-- WebM (.webm)
-
-## 注意事项
-
-- 首次运行时，应用会扫描当前目录下的所有文件，可能需要一些时间
-- 提取视频元数据需要使用 ffprobe，应用会自动处理
-- 应用会在当前目录下运行，不会修改任何电影文件
+ISC
