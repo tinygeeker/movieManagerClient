@@ -1,5 +1,5 @@
 {
-  "name": "movie-manager",
+  "name": "movie-manager-client",
   "version": "1.0.0",
   "description": "跨平台电影管理客户端",
   "main": "main.js",
@@ -10,7 +10,7 @@
     "package": "electron-packager . 电影管理器 --platform=win32 --arch=x64 --out=dist --overwrite"
   },
   "build": {
-    "appId": "com.tinygeeker.moviemanager",
+    "appId": "com.tinygeeker.moviemanagerclient",
     "productName": "电影管理器",
     "win": {
       "target": "nsis"
